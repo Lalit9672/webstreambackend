@@ -26,7 +26,12 @@ app.post("/consumer", async ({ body }, res) => {
   const peer = new webrtc.RTCPeerConnection({
     iceServers: [
       {
-        urls: "stun:stun.stunprotocol.org",
+        // urls: "stun:stun.stunprotocol.org",
+        urls: "stun:stun1.example.net",
+        urls: ["turns:turn.example.org", "turn:turn.example.net"],
+        username: "user",
+        credential: "myPassword",
+        credentialType: "password",
       },
     ],
   });
@@ -52,7 +57,12 @@ app.post("/broadcast", async ({ body }, res) => {
   const peer = new webrtc.RTCPeerConnection({
     iceServers: [
       {
-        urls: "stun:stun.stunprotocol.org",
+        // urls: "stun:stun.stunprotocol.org",
+        urls: "stun:stun1.example.net",
+        urls: ["turns:turn.example.org", "turn:turn.example.net"],
+        username: "user",
+        credential: "myPassword",
+        credentialType: "password",
       },
     ],
   });
