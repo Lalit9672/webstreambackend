@@ -27,13 +27,13 @@ app.post("/consumer", async ({ body }, res) => {
     iceServers: [
       {
         // urls: "stun:stun.stunprotocol.org",
-        urls: "stun:stun1.example.net",
-        urls: ["turns:turn.example.org", "turn:turn.example.net"],
-        username: "user",
-        credential: "myPassword",
-        credentialType: "password",
+        urls: [
+          "stun:stun1.l.google.com:19302",
+          "stun:stun2.l.google.com:19302",
+        ],
       },
     ],
+    iceCandidatePoolSize: 10,
   });
   const desc = new webrtc.RTCSessionDescription(body.sdp);
   await peer.setRemoteDescription(desc);
@@ -57,14 +57,13 @@ app.post("/broadcast", async ({ body }, res) => {
   const peer = new webrtc.RTCPeerConnection({
     iceServers: [
       {
-        // urls: "stun:stun.stunprotocol.org",
-        urls: "stun:stun1.example.net",
-        urls: ["turns:turn.example.org", "turn:turn.example.net"],
-        username: "user",
-        credential: "myPassword",
-        credentialType: "password",
+        urls: [
+          "stun:stun1.l.google.com:19302",
+          "stun:stun2.l.google.com:19302",
+        ],
       },
     ],
+    iceCandidatePoolSize: 10,
   });
   peer.ontrack = (e) => handleTrackEvent(e, peer);
   const desc = new webrtc.RTCSessionDescription(body.sdp);
