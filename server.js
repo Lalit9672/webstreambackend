@@ -17,6 +17,10 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 // app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.send("HEELLO");
+});
+
 app.post("/consumer", async ({ body }, res) => {
   console.log("SENDER STREAM", senderStream);
   const peer = new webrtc.RTCPeerConnection({
